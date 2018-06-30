@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://rejestrymedyczne.csioz.gov.pl/ra/eksport-danych-v1.0"
+    xmlns="http://rejestrymedyczne.csioz.gov.pl/ra/eksport-danych-v1.0">
+
+    <xs:element name="Apteki">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Apteka" type="AptekaTYPE" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute name="stanNaDzien"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="AptekaTYPE">
+        <xs:sequence>
+            <xs:element name="Wlasciciele" type="WlascicieleTYPE" minOccurs="0"/>
+            <xs:element name="Adres" type="AdresTYPE" minOccurs="0"/>            
+			<xs:element name="KierownikApteki" type="KierownikAptekiTYPE" minOccurs="0"/>
+			<xs:element name="Zezwolenie" type="ZezwolenieTYPE" minOccurs="0"/>
+            <xs:element name="ZmianyZezwolen" type="ZmianyZezwolenTYPE" minOccurs="0"/>
+		    <xs:element name="DniPracyApteki" type="DniPracyAptekiType" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="adresWWWSprzedazyWysylkowej" type="xs:string" use="optional"/>
+		<xs:attribute name="adresWWWApteki" type="xs:string" use="optional"/>		
+		<xs:attribute name="dataPonownegoRozpoczeciaDzialalnosciApteki" type="xs:date" use="optional"/>
+		<xs:attribute name="dataUruchomieniaApteki" type="xs:date" use="optional"/>
+		<xs:attribute name="dataZaprzestaniaDzialalnosciApteki" type="xs:date" use="optional"/>
+		<xs:attribute name="dataZawieszeniaDzialalnosciApteki" type="xs:date" use="optional"/>
+        <xs:attribute name="dataRozpoczeciaSprzedazyWysylkowejApteki" type="xs:date" use="optional"/>
+        <xs:attribute name="emailApteki" type="xs:string"/>
+        <xs:attribute name="faxApteki" type="xs:string"/>
+        <xs:attribute name="nazwa" type="xs:string"/>
+        <xs:attribute name="rodzaj" type="xs:string"/>
+        <xs:attribute name="status" type="xs:string"/>
+        <xs:attribute name="numerTelefonu" type="xs:string"/>
+        <xs:attribute name="zakresDzialalnosci" type="xs:string"/>
+        <xs:attribute name="id" type="xs:int"/>
+        <xs:attribute name="aptekaCzasowoNieczynna" type="xs:boolean"/>
+    </xs:complexType>
+    <xs:complexType name="WlascicieleTYPE">
+        <xs:sequence> 
+            <xs:element minOccurs="0" name="Adres" type="AdresTYPE"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Wlasciciel" type="WlascicielTYPE"
+            />
+        </xs:sequence>
+        <xs:attribute name="nazwaSpolkiCywilnej" type="xs:string"/>
+        <xs:attribute name="nip" type="xs:string"/>
+        <xs:attribute name="regon" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="WlascicielTYPE">
+        <xs:sequence>
+            <xs:element name="Adres" type="AdresTYPE" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="formaPrawna" type="xs:string"/>
+        <xs:attribute name="imie" type="xs:string"/>
+        <xs:attribute name="krs" type="xs:string"/>
+        <xs:attribute name="nazwa" type="xs:string"/>
+        <xs:attribute name="nazwisko" type="xs:string"/>
+        <xs:attribute name="nip" type="xs:string"/>
+        <xs:attribute name="regon" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="AdresTYPE">
+        <xs:attribute name="kodPocztowy" type="xs:string"/>
+        <xs:attribute name="miejscowosc" type="xs:string"/>
+        <xs:attribute name="typUlicy" type="xs:string"/>
+        <xs:attribute name="nazwaUlicy" type="xs:string"/>
+        <xs:attribute name="numerDomu" type="xs:string"/>
+        <xs:attribute name="numerLokalu" type="xs:string"/>
+        <xs:attribute name="poczta" type="xs:string"/>
+        <xs:attribute name="wojewodztwo" type="xs:string"/>
+        <xs:attribute name="powiat" type="xs:string"/>
+        <xs:attribute name="gmina" type="xs:string"/>
+        <xs:attribute name="simc" type="xs:string"/>
+        <xs:attribute name="terc" type="xs:string"/>
+        <xs:attribute name="ulic" type="xs:string"/>
+		<xs:attribute name="szerokoscGeograficzna" type="xs:string"/>
+        <xs:attribute name="dlugoscGeograficzna" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="ZezwolenieTYPE">
+	    <xs:attribute name="dataNadaniaRygoruNatychmiastowejWykonalnosciCofniecia" type="xs:date"/>		
+		<xs:attribute name="dataUprawomocnieniaZezwolenia" type="xs:date"/>		
+		<xs:attribute name="dataUprawomocnieniaCofnieciaWygaszeniaZezwolenia" type="xs:date"/>	
+        <xs:attribute name="dataCofnieciaZezwolenia" type="xs:date"/>
+        <xs:attribute name="dataWydania" type="xs:date"/>
+        <xs:attribute name="dataWygaszeniaZezwolenia" type="xs:date"/>
+        <xs:attribute name="nrZezwolenia" type="xs:string"/>
+        <xs:attribute name="organWydajacy" type="xs:string"/>
+        <xs:attribute name="rodzajZezwolenia" type="xs:string"/>
+        <xs:attribute name="sygnaturaSprawyDlaCofnieciaWygaszeniaZezwolenia" type="xs:string"/>
+        <xs:attribute name="terminWaznosci" type="xs:string"/>
+        <xs:attribute name="uwagiZezwolenia" type="xs:string"/>
+    </xs:complexType>
+	    <xs:complexType name="KierownikAptekiTYPE">
+        <xs:attribute name="imie" type="xs:string"/>
+        <xs:attribute name="nazwisko" type="xs:string"/>
+        <xs:attribute name="numerPrawaWykonywaniaZawodu" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="ZmianyZezwolenTYPE">
+        <xs:sequence>
+            <xs:element name="Zmiana" type="ZmianaTYPE" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ZmianaTYPE">
+        <xs:attribute name="nrDokumentu" type="xs:string"/>
+        <xs:attribute name="dataWydania" type="xs:date"/>
+    </xs:complexType>
+ <xs:complexType name="DniPracyAptekiType">
+    <xs:sequence>
+      <xs:element name="DniPracy" maxOccurs="unbounded" minOccurs="1">
+        <xs:complexType mixed="true">
+          <xs:sequence minOccurs="0">
+            <xs:element type="DzienPracyType" name="DzienPracy" maxOccurs="7" minOccurs="7" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+    <xs:complexType name="DzienPracyType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dzienTygodnia" use="required"/>
+        <xs:attribute type="xs:string" name="calodobowa" use="required"/>
+        <xs:attribute type="xs:string" name="otwartaOd" use="optional"/>
+        <xs:attribute type="xs:string" name="otwartaDo" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

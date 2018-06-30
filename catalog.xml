@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="https://rejestrymedyczne.csioz.gov.pl/RA.xsd" uri="src/main/resources/jaxb/RA/rejestrymedyczne.csioz.gov.pl/RA.xsd"/>
+</catalog>
